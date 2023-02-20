@@ -9,6 +9,7 @@
 #include "ChessGameModeBase.h"
 #include "CppChessPiece.h"
 #include "Materials/MaterialInstanceBasePropertyOverrides.h"
+#include "EnumNotationType.h"
 #include "CppBoardSquare.generated.h"
 
 UCLASS()
@@ -42,6 +43,8 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Materials") UMaterialInstance* mlActive;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Materials") UMaterialInstance* mlLight;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Materials") UMaterialInstance* mlDark;
+
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Enum Notation") EnumNotationType eNotation;
 
 protected:
 	// Called when the game starts or when spawned

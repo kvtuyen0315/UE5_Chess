@@ -27,4 +27,5 @@ void ACppBoardSquare::BeginPlay()
 
 	playerControllerRef = Cast<ACppPlayerController>(UGameplayStatics::GetPlayerController(GetWorld(), 0));
 	gameModeRef = Cast<AChessGameModeBase>(GetWorld()->GetAuthGameMode());
+
 }
