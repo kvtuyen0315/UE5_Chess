@@ -10,6 +10,7 @@
 #include "CppChessPiece.h"
 #include "Materials/MaterialInstanceBasePropertyOverrides.h"
 #include "EnumNotationType.h"
+#include "EnumColor.h"
 #include "CppBoardSquare.generated.h"
 
 UCLASS()
@@ -25,8 +26,11 @@ public:
 	UPROPERTY(EditAnywhere) UStaticMeshComponent* marker;
 	UPROPERTY(EditAnywhere) UStaticMeshComponent* square;
 
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setup") EnumColor colorType;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setup") int32 x;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Setup") int32 y;
+	EnumNotationType eNotationX;
+	EnumNotationType eNotationY;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Game Play") bool isSlected;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Game Play") bool isHightlighted;
@@ -44,7 +48,10 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Materials") UMaterialInstance* mlLight;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Materials") UMaterialInstance* mlDark;
 
-	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = "Enum Notation") EnumNotationType eNotation;
+	void SetNotation();
+	FVector GetLocation();
+
+	void SetSquareColor();
 
 protected:
 	// Called when the game starts or when spawned

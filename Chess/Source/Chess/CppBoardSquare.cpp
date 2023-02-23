@@ -18,6 +18,8 @@ ACppBoardSquare::ACppBoardSquare()
 
 	square = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("square"));
 	square->K2_AttachTo(billboard);
+
+	SetSquareColor();
 }
 
 // Called when the game starts or when spawned
@@ -27,5 +29,29 @@ void ACppBoardSquare::BeginPlay()
 
 	playerControllerRef = Cast<ACppPlayerController>(UGameplayStatics::GetPlayerController(GetWorld(), 0));
 	gameModeRef = Cast<AChessGameModeBase>(GetWorld()->GetAuthGameMode());
+	SetNotation();
+	SetSquareColor();
+}
 
+void ACppBoardSquare::SetNotation()
+{
+	eNotationX = (EnumNotationType)x;
+	eNotationY = (EnumNotationType)y;
+}
+
+FVector ACppBoardSquare::GetLocation()
+{
+	return billboard->GetComponentLocation();
+}
+
+void ACppBoardSquare::SetSquareColor()
+{
+	if (colorType == EnumColor::White)
+	{
+		square->SetMaterial(0, mlLight);
+	}
+	else
+	{
+		square->SetMaterial(0, mlDark);
+	}
 }
